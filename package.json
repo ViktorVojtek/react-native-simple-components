@@ -1,0 +1,12 @@
+{
+  "name": "react-native-simple-ui",
+  "version": "1.0.0",
+  "description": "Collection of essential UI components based on react-native components",
+  "main": "index.ts",
+  "author": "VV",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "typescript": "^4.9.4"
+  }
+}
