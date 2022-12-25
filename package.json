@@ -1,12 +1,19 @@
 {
-  "name": "react-native-simple-ui",
+  "name": "@viktorvojtek/react-native-simple-components",
   "version": "1.0.0",
   "description": "Collection of essential UI components based on react-native components",
   "main": "index.ts",
   "author": "VV",
   "license": "MIT",
-  "private": true,
+  "private": false,
+  "scripts": {
+    "build": "rm -rf ./build && tsc --declaration"
+  },
   "dependencies": {
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-native": "^0.63.4"
   }
 }
