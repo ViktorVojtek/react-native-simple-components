@@ -7,9 +7,13 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "rm -rf ./build && tsc --declaration"
+    "bundle": "rm -rf ./dist && tsc --declaration && cp package.json dist/ && cp README.md dist/",
+    "build": "yarn bundle"
   },
   "dependencies": {
+    "react-native-fast-image": "^8.6.3",
+    "react-native-feather": "^1.1.2",
+    "react-native-responsive-fontsize": "^0.5.1",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {

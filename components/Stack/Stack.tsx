@@ -52,7 +52,7 @@ function getChildrenWithSpace(
 ) {
   const Childs = Children.toArray(children);
 
-  const childrens = Childs.map((child, i) => {
+  const childrens = Childs.map((child: any, i: number) => {
     const marginLeft = isRow
       ? i <= Childs.length - 1 && i !== 0
         ? +space / 2
