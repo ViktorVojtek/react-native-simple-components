@@ -2,7 +2,7 @@
   "name": "@viktorvojtek/react-native-simple-components",
   "version": "1.0.0",
   "description": "Collection of essential UI components based on react-native components",
-  "main": "index.ts",
+  "main": "index.js",
   "author": "VV",
   "license": "MIT",
   "private": false,
