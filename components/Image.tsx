@@ -32,8 +32,20 @@ const Image = (props: Props): JSX.Element => {
     ...restStyleProps
   } = props;
 
+  const restImageProps = {
+    accessible,
+    accessibilityLabel,
+    onError,
+    onLayout,
+    onLoad,
+    onLoadEnd,
+    onLoadStart,
+    onProgress,
+    resizeMode,
+  };
+
   return (
-    <ImageBase source={src} style={[style, {...(restStyleProps as any)}]} />
+    <ImageBase source={src} style={[style, {...(restStyleProps as any)}]} {...restImageProps} />
   );
 };
 

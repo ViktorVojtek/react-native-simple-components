@@ -4,7 +4,6 @@ import type { StyleProp, TextInputProps } from 'react-native';
 
 import { mapShortStyleProps } from './utils';
 import type { ViewStyleProps } from './utils';
-import Stack from './Stack/Stack';
 import Text from './Text/Text';
 
 type Props = { label?: string, style?: ViewStyle | StyleProp<ViewStyle> } & ViewStyleProps & TextInputProps;
@@ -147,7 +146,6 @@ const TextInput = (props: Props) => {
             paddingHorizontal: 10,
             paddingVertical: 5,
             flexGrow: 1,
-            maxWidth: 175,
           },
           style,
           {...computedStyle}
