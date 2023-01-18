@@ -1,6 +1,5 @@
 export {default as Button} from './components/Button';
 export type {ButtonProps} from './components/Button';
-export {default as FAB} from './components/Button/ButtonFAB';
 export {default as Center} from './components/Center';
 export {default as Circle} from './components/Circle';
 export {default as Checkbox} from './components/Checkbox';
