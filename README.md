@@ -5,7 +5,7 @@ These components are designed to be easy to use, highly flexible and allowing yo
 
 This package inherits react native components such as buttons, spinner, text, scrollview, and [more](https://reactnative.dev/docs/components-and-apis).
 Each component is just a react native component with enhanced [style props](https://reactnative.dev/docs/view-style-props), to directly style a component via props.
-This approuch could lead to increased development speed when building UI.
+This approach could lead to increased development speed when building UI withou compromising app performance at all.
 
 As mentioned above, this package is really simple and easy to use. It's a great choice for beginners and experienced developers alike, when you need to build a UI quickly and easily, right out of the box. There is no configuration to be set up, no boilerplate code to write.
 

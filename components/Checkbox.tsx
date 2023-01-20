@@ -1,18 +1,24 @@
 import React, {forwardRef, memo, useState} from 'react';
-import {Check} from 'react-native-feather';
 
 import Pressable from './Pressable';
 import StackX from './Stack/StackX';
 import Text from './Text';
 
 type Props = {
+  backgroundColorActive?: string;
+  backgroundColor?: string;
+  tickActiveColor?: string;
+  tickColor?: string;
   children?: string;
   onChange?: (isChecked: boolean) => void;
   isChecked?: boolean;
+  size?: number;
 };
 
-const Checkbox = ({children, isChecked, onChange}: Props, ref?: any) => {
+const Checkbox = (props: Props, ref?: any) => {
   const [checked, toggleChecked] = useState(false);
+
+  const {backgroundColorActive, backgroundColor, children, isChecked, onChange, size, tickActiveColor, tickColor} = props;
 
   const onPress = () => {
     onChange?.(!checked);
@@ -20,9 +26,12 @@ const Checkbox = ({children, isChecked, onChange}: Props, ref?: any) => {
   };
 
   const isRealChecked = typeof isChecked === 'boolean' ? isChecked : checked;
-  const backgroundColor = isRealChecked ? '#b88b2d' : '#fff';
-  const iconSize = 18;
-  const size = iconSize * 1.5;
+  const backgroundColorResult = isRealChecked ? backgroundColorActive || '#ecf8ff' : backgroundColor || '#fff';
+  const iconSize = size ?? 18;
+  const componentSize = iconSize * 1.5;
+  const tickColorResult = isRealChecked ? tickActiveColor || '#000' : tickColor || '#000';
+
+  const isString = typeof children === 'string';
 
   return (
     <Pressable ref={ref} onPress={onPress}>
@@ -33,16 +42,16 @@ const Checkbox = ({children, isChecked, onChange}: Props, ref?: any) => {
           borderWidth={1}
           borderColor="#b88b2d"
           borderRadius={999}
-          backgroundColor={backgroundColor}
-          width={size}
-          height={size}>
+          backgroundColor={backgroundColorResult}
+          width={componentSize}
+          height={componentSize}>
           {isRealChecked && (
-            <Check color="#fff" width={iconSize} height={iconSize} />
+            <Text fontSize={iconSize}>✓</Text>
           )}
         </StackX>
 
-        {typeof children === 'string' ? (
-          <Text fontSize={14}>{children}</Text>
+        {isString ? (
+          <Text color={tickColorResult} fontSize={14}>{children}</Text>
         ) : (
           children
         )}

@@ -2,3 +2,4 @@ node_modules
 *.lock
 .npmignore
 dist
+.DS_Store

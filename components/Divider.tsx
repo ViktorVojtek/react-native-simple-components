@@ -10,7 +10,7 @@ type Props = {
 
 const Divider = ({color, isVertical}: Props) => {
   const flexDirection = isVertical ? 'column' : 'row';
-  const borderColor = color || '#b88b2d';
+  const borderColor = color || '#e5e4e2';
   const borderBottomWidth = !isVertical ? 1 : undefined;
   const borderLeftWidth = isVertical ? 1 : undefined;
   const width = !isVertical ? '100%' : undefined;

@@ -1,9 +1,13 @@
 {
   "name": "@viktorvojtek/react-native-simple-components",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "Collection of essential UI components based on react-native components",
   "main": "index.js",
-  "author": "VV",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViktorVojtek/react-native-simple-components"
+  },
+  "author": "ViktorVojtek",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -12,7 +16,6 @@
   },
   "dependencies": {
     "react-native-fast-image": "^8.6.3",
-    "react-native-feather": "^1.1.2",
     "react-native-responsive-fontsize": "^0.5.1",
     "typescript": "^4.9.4"
   },
@@ -23,5 +26,19 @@
   "peerDependencies": {
     "react": "^16.13.1",
     "react-native": "^0.63.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/ViktorVojtek/react-native-simple-components/issues"
+  },
+  "homepage": "https://github.com/ViktorVojtek/react-native-simple-components#readme",
+  "keywords": [
+    "react",
+    "react-native",
+    "react-native-components",
+    "react-native-ui",
+    "react-native-ui-components",
+    "react-native-ui-kit",
+    "ui",
+    "components"
+  ]
 }
