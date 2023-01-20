@@ -14,6 +14,8 @@ If you have any questions or feedback, please don't hesitate to reach out to me.
 
 ## Installation
 
+**Make sure you have installed React Native of version 0.60 or higher.**
+
 NPM:
 
 ```bash
