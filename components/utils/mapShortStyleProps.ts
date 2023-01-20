@@ -1,7 +1,6 @@
-import {ColorValue, ViewStyle} from 'react-native';
+import { ColorValue, ViewStyle } from "react-native";
 
-export type ViewStyleProps = {
-  bgColor?: ColorValue;
+type MarginProps = {
   m?: number | string;
   ml?: number | string;
   mt?: number | string;
@@ -9,6 +8,9 @@ export type ViewStyleProps = {
   mb?: number | string;
   mx?: number | string;
   my?: number | string;
+};
+
+type PaddingProps = {
   p?: number | string;
   pl?: number | string;
   pt?: number | string;
@@ -16,65 +18,84 @@ export type ViewStyleProps = {
   pb?: number | string;
   px?: number | string;
   py?: number | string;
-} & ViewStyle;
+};
+
+export type ViewStyleProps = {
+  bgColor?: ColorValue;
+} & MarginProps &
+  PaddingProps &
+  ViewStyle;
 
 export default function mapShortStyleProps(
-  styleProps: ViewStyleProps,
+  styleProps: ViewStyleProps
 ): ViewStyle {
-  const {
-    bgColor,
-    m,
-    ml,
-    mt,
-    mr,
-    mb,
-    mx,
-    my,
-    p,
-    pl,
-    pt,
-    pr,
-    pb,
-    px,
-    py,
-    ...restStyleProps
-  } = styleProps;
-  let result: any = {};
+  const { bgColor, ...marginProps } = styleProps;
+  const { ...paddingProps } = marginProps;
+  let result: ViewStyleProps = {};
 
-  if (typeof bgColor !== 'undefined') {
+  if (typeof bgColor !== "undefined") {
     result.backgroundColor = bgColor;
-  } else if (typeof m !== 'undefined') {
+  }
+  result = { ...result, ...mapMarginProps(marginProps) };
+  result = { ...result, ...mapPaddingProps(paddingProps) };
+
+  return result;
+}
+
+function mapMarginProps(props: MarginProps): ViewStyle {
+  const { m, ml, mt, mr, mb, mx, my } = props;
+  let result: ViewStyle = {};
+
+  if (typeof m !== "undefined") {
     result.margin = m;
-  } else if (typeof ml !== 'undefined') {
+  }
+  if (typeof ml !== "undefined") {
     result.marginLeft = ml;
-  } else if (typeof mt !== 'undefined') {
+  }
+  if (typeof mt !== "undefined") {
     result.marginTop = mt;
-  } else if (typeof mr !== 'undefined') {
+  }
+  if (typeof mr !== "undefined") {
     result.marginRight = mr;
-  } else if (typeof mb !== 'undefined') {
+  }
+  if (typeof mb !== "undefined") {
     result.marginBottom = mb;
-  } else if (typeof mx !== 'undefined') {
+  }
+  if (typeof mx !== "undefined") {
     result.marginHorizontal = mx;
-  } else if (typeof my !== 'undefined') {
+  }
+  if (typeof my !== "undefined") {
     result.marginVertical = my;
-  } else if (typeof p !== 'undefined') {
+  }
+
+  return result;
+}
+
+function mapPaddingProps(props: PaddingProps): ViewStyle {
+  const { p, pl, pt, pr, pb, px, py } = props;
+  let result: ViewStyle = {};
+
+  if (typeof p !== "undefined") {
     result.padding = p;
-  } else if (typeof pl !== 'undefined') {
+  }
+  if (typeof pl !== "undefined") {
     result.paddingLeft = pl;
-  } else if (typeof pt !== 'undefined') {
+  }
+  if (typeof pt !== "undefined") {
     result.paddingTop = pt;
-  } else if (typeof pr !== 'undefined') {
+  }
+  if (typeof pr !== "undefined") {
     result.paddingRight = pr;
-  } else if (typeof pb !== 'undefined') {
-    result.paddingBottom = pb;
-  } else if (typeof px !== 'undefined') {
+  }
+  if (typeof pb !== "undefined") {
+    result.padding;
+  }
+  if (typeof px !== "undefined") {
     result.paddingHorizontal = px;
-  } else if (typeof py !== 'undefined') {
+  }
+  if (typeof py !== "undefined") {
     result.paddingVertical = py;
   }
 
-  return {
-    ...restStyleProps,
-    ...result,
-  };
+  return result;
 }

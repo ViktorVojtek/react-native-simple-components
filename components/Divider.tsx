@@ -1,20 +1,20 @@
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
-import Stack from './Stack';
-import type {StackProps} from './Stack';
+import Stack from "./Stack";
+import type { StackProps } from "./Stack";
 
 type Props = {
   color?: string;
   isVertical?: boolean;
 } & StackProps;
 
-const Divider = ({color, isVertical}: Props) => {
-  const flexDirection = isVertical ? 'column' : 'row';
-  const borderColor = color || '#e5e4e2';
+const Divider = ({ color = "#d3d3d3", isVertical = false }: Props) => {
+  const flexDirection = isVertical ? "column" : "row";
+  const borderColor = color;
   const borderBottomWidth = !isVertical ? 1 : undefined;
   const borderLeftWidth = isVertical ? 1 : undefined;
-  const width = !isVertical ? '100%' : undefined;
-  const height = isVertical ? '100%' : undefined;
+  const width = !isVertical ? "100%" : undefined;
+  const height = isVertical ? "100%" : undefined;
 
   return (
     <Stack
