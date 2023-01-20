@@ -1,6 +1,6 @@
-import { ColorValue, ViewStyle } from "react-native";
+import {ColorValue, ViewStyle} from 'react-native';
 
-type MarginProps = {
+export type MarginProps = {
   m?: number | string;
   ml?: number | string;
   mt?: number | string;
@@ -10,7 +10,7 @@ type MarginProps = {
   my?: number | string;
 };
 
-type PaddingProps = {
+export type PaddingProps = {
   p?: number | string;
   pl?: number | string;
   pt?: number | string;
@@ -27,44 +27,82 @@ export type ViewStyleProps = {
   ViewStyle;
 
 export default function mapShortStyleProps(
-  styleProps: ViewStyleProps
+  styleProps: ViewStyleProps,
 ): ViewStyle {
-  const { bgColor, ...marginProps } = styleProps;
-  const { ...paddingProps } = marginProps;
+  const {
+    bgColor,
+    m,
+    ml,
+    mt,
+    mr,
+    mb,
+    mx,
+    my,
+    p,
+    pl,
+    pt,
+    pr,
+    pb,
+    px,
+    py,
+    ...restStyleProps
+  } = styleProps;
+
+  const marginProps = {m, ml, mt, mr, mb, mx, my};
+  const paddingProps = {p, pl, pt, pr, pb, px, py};
+
   let result: ViewStyleProps = {};
 
-  if (typeof bgColor !== "undefined") {
-    result.backgroundColor = bgColor;
-  }
-  result = { ...result, ...mapMarginProps(marginProps) };
-  result = { ...result, ...mapPaddingProps(paddingProps) };
+  const isMarginProps = Object.values(marginProps).some(
+    value => typeof value !== 'undefined',
+  );
+  const isPaddingProps = Object.values(paddingProps).some(
+    value => typeof value !== 'undefined',
+  );
 
-  return result;
+  if (isMarginProps) {
+    result = {
+      ...result,
+      ...mapMarginProps(marginProps),
+    };
+  }
+
+  if (isPaddingProps) {
+    result = {
+      ...result,
+      ...mapPaddingProps(paddingProps),
+    };
+  }
+
+  return {
+    ...restStyleProps,
+    ...result,
+  };
 }
 
 function mapMarginProps(props: MarginProps): ViewStyle {
-  const { m, ml, mt, mr, mb, mx, my } = props;
+  const {m, ml, mt, mr, mb, mx, my} = props;
   let result: ViewStyle = {};
 
-  if (typeof m !== "undefined") {
+  if (typeof m !== 'undefined') {
     result.margin = m;
   }
-  if (typeof ml !== "undefined") {
+  if (typeof ml !== 'undefined') {
     result.marginLeft = ml;
   }
-  if (typeof mt !== "undefined") {
+  if (typeof mt !== 'undefined') {
     result.marginTop = mt;
   }
-  if (typeof mr !== "undefined") {
+  if (typeof mr !== 'undefined') {
     result.marginRight = mr;
   }
-  if (typeof mb !== "undefined") {
+  if (typeof mb !== 'undefined') {
     result.marginBottom = mb;
   }
-  if (typeof mx !== "undefined") {
+  if (typeof mx !== 'undefined') {
     result.marginHorizontal = mx;
   }
-  if (typeof my !== "undefined") {
+  if (typeof my !== 'undefined') {
     result.marginVertical = my;
   }
 
@@ -72,28 +110,28 @@ function mapMarginProps(props: MarginProps): ViewStyle {
 }
 
 function mapPaddingProps(props: PaddingProps): ViewStyle {
-  const { p, pl, pt, pr, pb, px, py } = props;
+  const {p, pl, pt, pr, pb, px, py} = props;
   let result: ViewStyle = {};
 
-  if (typeof p !== "undefined") {
+  if (typeof p !== 'undefined') {
     result.padding = p;
   }
-  if (typeof pl !== "undefined") {
+  if (typeof pl !== 'undefined') {
     result.paddingLeft = pl;
   }
-  if (typeof pt !== "undefined") {
+  if (typeof pt !== 'undefined') {
     result.paddingTop = pt;
   }
-  if (typeof pr !== "undefined") {
+  if (typeof pr !== 'undefined') {
     result.paddingRight = pr;
   }
-  if (typeof pb !== "undefined") {
+  if (typeof pb !== 'undefined') {
     result.padding;
   }
-  if (typeof px !== "undefined") {
+  if (typeof px !== 'undefined') {
     result.paddingHorizontal = px;
   }
-  if (typeof py !== "undefined") {
+  if (typeof py !== 'undefined') {
     result.paddingVertical = py;
   }
 

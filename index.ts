@@ -11,4 +11,8 @@ export {default as Spinner} from './components/Spinner';
 export {default as Stack, StackY, StackX} from './components/Stack';
 export {default as Text} from './components/Text';
 export {default as TextInput} from './components/TextInput';
-export type {ViewStyleProps} from './components/utils/mapShortStyleProps';
+export type {
+  ViewStyleProps,
+  MarginProps,
+  PaddingProps,
+} from './components/utils/mapShortStyleProps';
