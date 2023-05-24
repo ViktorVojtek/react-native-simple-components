@@ -91,7 +91,7 @@ const Pressable = (props: Props, ref?: any): JSX.Element => {
   return (
     <PressableBase
       ref={ref}
-      style={[style, {...computedProps}, ...coloredPropItems]}
+      style={[style, ...computedProps, ...coloredPropItems]}
       {...restProps}>
       {children}
     </PressableBase>

@@ -1,12 +1,12 @@
-import React, { memo } from "react";
+import React, {memo} from 'react';
 import {
   ImageBackground as ImageBackgroundBase,
   ImageBackgroundProps as ImageBackgroundPropsBase,
   ImageStyle,
   StyleProp,
-} from "react-native";
-import { ViewStyleProps, mapShortStyleProps } from "../utils";
-import useColoredProps from "../hooks/useColoredProps";
+} from 'react-native';
+import {ViewStyleProps, mapShortStyleProps} from '../utils';
+import useColoredProps from '../hooks/useColoredProps';
 
 export type ImageBackgroundProps = {
   children?: React.ReactNode;
@@ -86,7 +86,7 @@ const ImageBackground = (props: ImageBackgroundProps) => {
   };
 
   const styleProps = mapShortStyleProps(
-    restStyleProps
+    restStyleProps,
   ) as unknown as StyleProp<ImageStyle>[];
 
   return (

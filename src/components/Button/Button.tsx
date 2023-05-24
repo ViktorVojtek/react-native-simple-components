@@ -53,9 +53,9 @@ const Button = (props: Props): JSX.Element => {
             paddingHorizontal: 20,
             paddingVertical: 10,
           },
-          ...computedStyleProps,
-          ...coloredPropItems,
         ],
+        ...computedStyleProps,
+        ...coloredPropItems,
       ]}
       {...restPressableProps}
     />
