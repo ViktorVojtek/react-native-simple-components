@@ -1,32 +1,38 @@
-import React, {Children, forwardRef, memo, useMemo} from 'react';
-import type {ForwardedRef, ReactNode} from 'react';
+import React, { Children, forwardRef, memo, useMemo } from "react";
+import type { ForwardedRef, ReactNode } from "react";
 
-import {View} from 'react-native';
-import type {ViewProps, ViewStyle} from 'react-native';
+import { View } from "react-native";
+import type { ViewProps, ViewStyle } from "react-native";
 
-import {mapShortStyleProps, ViewStyleProps} from '../utils';
+import { mapShortStyleProps, ViewStyleProps } from "../../utils";
+import useColoredProps from "../../hooks/useColoredProps";
 
 type Props = {
   children?: ReactNode | ReactNode[];
   space?: string | number;
   style?: ViewStyle;
-  pointerEvents?: 'auto' | 'none' | 'box-none';
-} & Pick<ViewProps, 'style'> &
+  pointerEvents?: "auto" | "none" | "box-none";
+} & Pick<ViewProps, "style"> &
   ViewStyleProps;
 
 export type StackProps = Props;
 
 const Stack = forwardRef((props: Props, ref?: ForwardedRef<any>) => {
-  const {children, pointerEvents, space, style, ...restStyleProps} = props;
+  const { children, pointerEvents, space, style, ...restStyleProps } = props;
 
-  const computedProps = useMemo(() => mapShortStyleProps(restStyleProps), [restStyleProps]);
+  const coloredPropItems = useColoredProps(props);
+
+  const computedProps = useMemo(
+    () => mapShortStyleProps(restStyleProps),
+    [restStyleProps]
+  );
 
   const isRow = !!(
-    props.flexDirection && props.flexDirection.toLowerCase().indexOf('row') > -1
+    props.flexDirection && props.flexDirection.toLowerCase().indexOf("row") > -1
   );
 
   const childrens = useMemo(() => {
-    if (typeof space === 'undefined') {
+    if (typeof space === "undefined") {
       return [children];
     }
 
@@ -39,7 +45,8 @@ const Stack = forwardRef((props: Props, ref?: ForwardedRef<any>) => {
     <View
       ref={ref}
       pointerEvents={pointerEvents}
-      style={[style, {...computedProps}]}>
+      style={[style, { ...computedProps, ...coloredPropItems }]}
+    >
       {isMore ? childrens : children}
     </View>
   );
@@ -48,7 +55,7 @@ const Stack = forwardRef((props: Props, ref?: ForwardedRef<any>) => {
 function getChildrenWithSpace(
   children: ReactNode,
   isRow: boolean,
-  space: string | number,
+  space: string | number
 ) {
   const Childs = Children.toArray(children);
 

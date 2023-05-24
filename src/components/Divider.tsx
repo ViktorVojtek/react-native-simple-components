@@ -1,7 +1,8 @@
-import React, { memo } from "react";
+import React, { memo, useMemo } from "react";
 
 import Stack from "./Stack";
 import type { StackProps } from "./Stack";
+import { useTheme } from "../ThemeProvider";
 
 type Props = {
   color?: string;
@@ -9,8 +10,15 @@ type Props = {
 } & StackProps;
 
 const Divider = ({ color = "#d3d3d3", isVertical = false }: Props) => {
+  const theme = useTheme();
+
+  const colorValue = useMemo(() => {
+    return Object.keys(theme?.colors ?? {}).includes(color)
+      ? theme?.colors?.[color]
+      : color;
+  }, [theme, color]);
+
   const flexDirection = isVertical ? "column" : "row";
-  const borderColor = color;
   const borderBottomWidth = !isVertical ? 1 : undefined;
   const borderLeftWidth = isVertical ? 1 : undefined;
   const width = !isVertical ? "100%" : undefined;
@@ -21,7 +29,7 @@ const Divider = ({ color = "#d3d3d3", isVertical = false }: Props) => {
       flexDirection={flexDirection}
       borderBottomWidth={borderBottomWidth}
       borderLeftWidth={borderLeftWidth}
-      borderColor={borderColor}
+      borderColor={colorValue}
       width={width}
       height={height}
     />

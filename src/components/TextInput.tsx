@@ -1,14 +1,21 @@
-import React, { memo, useMemo } from 'react';
-import { TextInput as TextInputBase, ViewStyle } from 'react-native';
-import type { StyleProp, TextInputProps } from 'react-native';
+import React, { memo, useMemo } from "react";
+import { TextInput as TextInputBase, ViewStyle } from "react-native";
+import type { StyleProp, TextInputProps } from "react-native";
 
-import { mapShortStyleProps } from './utils';
-import type { ViewStyleProps } from './utils';
-import Text from './Text/Text';
+import { mapShortStyleProps } from "../utils";
+import type { ViewStyleProps } from "../utils";
+import Text from "./Text/Text";
+import useColoredProps from "../hooks/useColoredProps";
 
-type Props = { label?: string, style?: ViewStyle | StyleProp<ViewStyle> } & ViewStyleProps & TextInputProps;
+type Props = {
+  label?: string;
+  style?: ViewStyle | StyleProp<ViewStyle>;
+} & ViewStyleProps &
+  TextInputProps;
 
 const TextInput = (props: Props) => {
+  const coloredPropItems = useColoredProps(props);
+
   const {
     label,
     allowFontScaling,
@@ -126,9 +133,13 @@ const TextInput = (props: Props) => {
     passwordRules, // iOS
   };
 
-  const computedStyle = useMemo(() => mapShortStyleProps(restStyleProps), [restStyleProps]);
+  const computedStyle = useMemo(
+    () => mapShortStyleProps(restStyleProps),
+    [restStyleProps]
+  );
 
-  const space = label ? 6 : 0;
+  // TODO: Test this out for label
+  // const space = label ? 8 : 0;
 
   return (
     <>
@@ -136,9 +147,9 @@ const TextInput = (props: Props) => {
       <TextInputBase
         style={[
           {
-            backgroundColor: '#fff',
+            backgroundColor: "#fff",
             borderWidth: 2,
-            borderColor: '#000',
+            borderColor: "#000",
             borderTopLeftRadius: 5,
             borderTopRightRadius: 5,
             borderBottomLeftRadius: 5,
@@ -148,7 +159,8 @@ const TextInput = (props: Props) => {
             flexGrow: 1,
           },
           style,
-          {...computedStyle}
+          { ...computedStyle },
+          ...coloredPropItems,
         ]}
         {...restProps}
       />

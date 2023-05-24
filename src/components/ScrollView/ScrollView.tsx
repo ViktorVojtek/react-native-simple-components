@@ -1,22 +1,25 @@
-import React from 'react';
-import type { ReactNode } from 'react';
+import React from "react";
+import type { ReactNode } from "react";
 
 import {
   ScrollView as ScrollViewBase,
   ScrollViewProps as ScrollViewBaseProps,
   ViewProps,
   ViewStyle,
-} from 'react-native';
+} from "react-native";
+import useColoredProps from "../../hooks/useColoredProps";
 
 type Props = {
   children: ReactNode;
 } & ViewStyle &
   ScrollViewBaseProps &
-  Pick<ViewProps, 'style'>;
+  Pick<ViewProps, "style">;
 
 export type ScrollViewProps = Props;
 
 const ScrollView = (props: Props) => {
+  const coloredPropItems = useColoredProps(props);
+
   const {
     children,
     StickyHeaderComponent,
@@ -84,7 +87,12 @@ const ScrollView = (props: Props) => {
     zoomScale,
   };
 
-  return <ScrollViewBase style={{...restStyleProps}} {...scrollViewProps} />;
+  return (
+    <ScrollViewBase
+      style={{ ...restStyleProps, ...coloredPropItems }}
+      {...scrollViewProps}
+    />
+  );
 };
 
 export default ScrollView;
