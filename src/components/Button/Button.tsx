@@ -1,9 +1,9 @@
-import React, { memo } from "react";
+import React, {memo} from 'react';
 
-import Pressable from "../Pressable";
-import type { PressableProps } from "../Pressable";
-import { mapShortStyleProps } from "../../utils";
-import useColoredProps from "../../hooks/useColoredProps";
+import Pressable from '../Pressable';
+import type {PressableProps} from '../Pressable';
+import {mapShortStyleProps} from '../../utils';
+import useColoredProps from '../../hooks/useColoredProps';
 
 type Props = PressableProps;
 
@@ -13,7 +13,7 @@ const Button = (props: Props): JSX.Element => {
   const coloredPropItems = useColoredProps(props);
 
   const {
-    backgroundColor = "#b39afd",
+    backgroundColor = '#b39afd',
     children,
     disabled,
     hitSlop,
@@ -43,17 +43,19 @@ const Button = (props: Props): JSX.Element => {
     <Pressable
       style={[
         style,
-        {
-          backgroundColor,
-          borderTopLeftRadius: 5,
-          borderTopRightRadius: 5,
-          borderBottomLeftRadius: 5,
-          borderBottomRightRadius: 5,
-          paddingHorizontal: 20,
-          paddingVertical: 10,
-        },
-        { ...computedStyleProps },
-        ...coloredPropItems,
+        [
+          {
+            backgroundColor,
+            borderTopLeftRadius: 5,
+            borderTopRightRadius: 5,
+            borderBottomLeftRadius: 5,
+            borderBottomRightRadius: 5,
+            paddingHorizontal: 20,
+            paddingVertical: 10,
+          },
+          ...computedStyleProps,
+          ...coloredPropItems,
+        ],
       ]}
       {...restPressableProps}
     />

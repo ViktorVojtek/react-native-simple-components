@@ -1,13 +1,16 @@
-import React, { useMemo } from "react";
-import { ActivityIndicator } from "react-native";
-import type { ActivityIndicatorProps as Props } from "react-native";
+import React, {useMemo} from 'react';
+import {ActivityIndicator} from 'react-native';
+import type {ActivityIndicatorProps} from 'react-native';
 
-import Stack from "../Stack";
-import { useTheme } from "../../ThemeProvider";
+import Stack from '../Stack';
+import {useTheme} from '../../ThemeProvider';
 
-export type SpinnerProps = Props;
+export type SpinnerProps = {color?: string} & Omit<
+  ActivityIndicatorProps,
+  'color'
+>;
 
-const Spinner = ({ size = "large", color = "#a16d02" }: Props) => {
+const Spinner = ({size = 'large', color = '#a16d02'}: SpinnerProps) => {
   const theme = useTheme();
 
   const colorValue = useMemo(() => {
@@ -21,7 +24,7 @@ const Spinner = ({ size = "large", color = "#a16d02" }: Props) => {
   }, [theme, color]);
 
   return (
-    <Stack position='relative'>
+    <Stack position="relative">
       <ActivityIndicator size={size} color={colorValue} />
     </Stack>
   );
