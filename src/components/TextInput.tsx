@@ -118,7 +118,7 @@ const TextInput = (props: Props) => {
     onSelectionChange,
     onSubmitEditing,
     placeholder,
-    placeholderTextColor,
+    // placeholderTextColor,
     returnKeyLabel, // Android
     returnKeyType,
     rejectResponderTermination, // iOS
