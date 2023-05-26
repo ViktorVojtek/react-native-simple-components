@@ -72,6 +72,7 @@ const TextInput = (props: Props) => {
     textAlign,
     textContentType, // iOS
     passwordRules, // iOS
+    color,
     style,
     ...restStyleProps
   } = props;
@@ -146,6 +147,7 @@ const TextInput = (props: Props) => {
       {label && <Text>{label}</Text>}
       <TextInputBase
         style={[
+          style,
           {
             backgroundColor: "#fff",
             borderWidth: 2,
@@ -158,8 +160,7 @@ const TextInput = (props: Props) => {
             paddingVertical: 5,
             flexGrow: 1,
           },
-          style,
-          { ...computedStyle },
+          ...computedStyle,
           ...coloredPropItems,
         ]}
         {...restProps}

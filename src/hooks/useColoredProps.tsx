@@ -13,6 +13,7 @@ const useColoredProps = (props: any) => {
         { borderColor: props.borderColor },
         { bgColor: props.bgColor },
         { backgroundColor: props.backgroundColor },
+        { placeholderTextColor: props.placeholderTextColor },
       ]
         ?.filter((item) => !!Object.values(item)[0])
         ?.map((item) => {
@@ -39,6 +40,7 @@ const useColoredProps = (props: any) => {
     props.color,
     props.borderColor,
     props.bgColor,
+    props.placeholderTextColor,
   ]);
 
   return coloredPropItems;
