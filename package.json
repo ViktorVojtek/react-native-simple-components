@@ -1,6 +1,6 @@
 {
   "name": "@viktorvojtek/react-native-simple-components",
-  "version": "1.0.27",
+  "version": "1.0.31",
   "description": "Collection of essential UI components based on react-native components",
   "main": "index.js",
   "repository": {
