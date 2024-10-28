@@ -11,6 +11,7 @@ type Props = {
   fontWeight?: number | string;
   letterSpacing?: string;
   numberOfLines?: number;
+  style?: TextStyle;
 } & Omit<TextStyle, "fontSize" | "fontWeight" | "color">;
 
 export type TextProps = Props;
