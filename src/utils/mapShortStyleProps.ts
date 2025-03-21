@@ -87,25 +87,25 @@ function mapMarginProps(props: MarginProps): ViewStyle {
   let result: ViewStyle = {};
 
   if (typeof m !== "undefined") {
-    result.margin = m;
+    result.margin = m as ViewStyle["margin"];
   }
   if (typeof ml !== "undefined") {
-    result.marginLeft = ml;
+    result.marginLeft = ml as ViewStyle["marginLeft"];
   }
   if (typeof mt !== "undefined") {
-    result.marginTop = mt;
+    result.marginTop = mt as ViewStyle["marginTop"];
   }
   if (typeof mr !== "undefined") {
-    result.marginRight = mr;
+    result.marginRight = mr as ViewStyle["marginRight"];
   }
   if (typeof mb !== "undefined") {
-    result.marginBottom = mb;
+    result.marginBottom = mb as ViewStyle["marginBottom"];
   }
   if (typeof mx !== "undefined") {
-    result.marginHorizontal = mx;
+    result.marginHorizontal = mx as ViewStyle["marginHorizontal"];
   }
   if (typeof my !== "undefined") {
-    result.marginVertical = my;
+    result.marginVertical = my as ViewStyle["marginVertical"];
   }
 
   return result;
@@ -116,25 +116,25 @@ function mapPaddingProps(props: PaddingProps): ViewStyle {
   let result: ViewStyle = {};
 
   if (typeof p !== "undefined") {
-    result.padding = p;
+    result.padding = p as ViewStyle["padding"];
   }
   if (typeof pl !== "undefined") {
-    result.paddingLeft = pl;
+    result.paddingLeft = pl as ViewStyle["paddingLeft"];
   }
   if (typeof pt !== "undefined") {
-    result.paddingTop = pt;
+    result.paddingTop = pt as ViewStyle["paddingTop"];
   }
   if (typeof pr !== "undefined") {
-    result.paddingRight = pr;
+    result.paddingRight = pr as ViewStyle["paddingRight"];
   }
   if (typeof pb !== "undefined") {
-    result.padding;
+    result.paddingBottom = pb as ViewStyle["paddingBottom"];
   }
   if (typeof px !== "undefined") {
-    result.paddingHorizontal = px;
+    result.paddingHorizontal = px as ViewStyle["paddingHorizontal"];
   }
   if (typeof py !== "undefined") {
-    result.paddingVertical = py;
+    result.paddingVertical = py as ViewStyle["paddingVertical"];
   }
 
   return result;
