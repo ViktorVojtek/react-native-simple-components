@@ -1,6 +1,7 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useMemo, forwardRef } from "react";
+import type { ForwardedRef } from "react";
 import { TextInput as TextInputBase, ViewStyle } from "react-native";
-import type { StyleProp, TextInputProps } from "react-native";
+import type { StyleProp, TextInputProps, TextStyle,  } from "react-native";
 
 import { mapShortStyleProps } from "../utils";
 import type { ViewStyleProps } from "../utils";
@@ -11,9 +12,9 @@ type Props = {
   label?: string;
   style?: ViewStyle | StyleProp<ViewStyle>;
 } & ViewStyleProps &
-  TextInputProps;
+  TextInputProps & TextStyle;
 
-const TextInput = (props: Props) => {
+const TextInput = forwardRef<TextInputBase, Props>((props: Props, ref: ForwardedRef<TextInputBase>) => {
   const coloredPropItems = useColoredProps(props);
 
   const {
@@ -146,6 +147,7 @@ const TextInput = (props: Props) => {
     <>
       {label && <Text>{label}</Text>}
       <TextInputBase
+        ref={ref}
         style={[
           style,
           {
@@ -167,6 +169,6 @@ const TextInput = (props: Props) => {
       />
     </>
   );
-};
+});
 
 export default memo(TextInput);
