@@ -1,6 +1,6 @@
 {
   "name": "@viktorvojtek/react-native-simple-components",
-  "version": "1.0.31",
+  "version": "1.0.36",
   "description": "Collection of essential UI components based on react-native components",
   "main": "index.js",
   "repository": {
@@ -20,11 +20,13 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.6",
-    "jest": "^29.3.1"
+    "jest": "^29.3.1",
+    "react": "^19.0.0",
+    "react-native": "^0.78.0"
   },
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-native": "^0.63.4"
+    "react": ">=16.13.1",
+    "react-native": ">=0.63.0"
   },
   "bugs": {
     "url": "https://github.com/ViktorVojtek/react-native-simple-components/issues"
